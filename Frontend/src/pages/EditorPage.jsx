@@ -239,10 +239,10 @@ const EditorPage = () => {
     };
 
     return (
-        <div style={styles.container}>
+        <div className="responsive-container" style={styles.container}>
             <Toaster position="top-right" /> 
             
-            <div style={styles.sidebar}>
+            <div className="responsive-sidebar" style={styles.sidebar}>
                 <div style={styles.sidebarInner}>
                     <h2 style={styles.logo}>🚀 CollabXcode</h2>
                     <hr style={styles.divider} />
@@ -264,7 +264,7 @@ const EditorPage = () => {
                 </div>
             </div>
 
-            <div style={styles.editorWrap}>
+            <div className="responsive-editor-wrap" style={styles.editorWrap}>
                 <div style={styles.editorNavbar}>
                     <div style={styles.langWrapper}>
                         <span style={styles.langLabel}>Language: </span>
@@ -306,8 +306,8 @@ const EditorPage = () => {
                 </div>
 
                 {/* Neeche Input or Output ka section */}
-                <div style={styles.ioContainer}>
-                    <div style={styles.ioBox}>
+                <div className="responsive-io-container" style={styles.ioContainer}>
+                    <div className="responsive-io-box" style={styles.ioBox}>
                         <h4 style={styles.ioHeading}>📥 Custom Input</h4>
                         <textarea 
                             style={styles.ioTextarea}
@@ -316,7 +316,7 @@ const EditorPage = () => {
                             placeholder="Apna input yahan type karein..."
                         ></textarea>
                     </div>
-                    <div style={styles.ioBox}>
+                    <div className="responsive-io-box" style={styles.ioBox}>
                         <h4 style={styles.ioHeading}>📤 Output</h4>
                         <pre style={styles.outputArea}>
                             {output || "Output yahan aayega..."}
@@ -327,7 +327,7 @@ const EditorPage = () => {
 
             {/* 💬 Chat Box Sidebar & Floating Icon */}
             {isChatOpen && (
-                <div style={styles.chatBox}>
+                <div className="responsive-chat-box" style={styles.chatBox}>
                     <div style={styles.chatHeader}>
                         <h4 style={{ margin: 0 }}>Room Chat</h4>
                         <button onClick={() => setIsChatOpen(false)} style={styles.closeChatBtn}>✖</button>
