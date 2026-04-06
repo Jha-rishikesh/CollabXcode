@@ -1,0 +1,6 @@
+# Monorepo Root Ignores
+node_modules/
+.env
+
+# MacOS
+.DS_Store
