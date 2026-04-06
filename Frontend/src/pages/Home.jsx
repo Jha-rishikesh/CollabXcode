@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios'; // Backend se baat karne ke liye
 
 const Home = () => {
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
     const navigate = useNavigate();
     const [roomId, setRoomId] = useState('');
     const [username, setUsername] = useState('');
@@ -22,7 +23,7 @@ const Home = () => {
             const fetchMyRooms = async () => {
                 try {
                     const config = { headers: { Authorization: `Bearer ${parsedInfo.token}` } };
-                    const { data } = await axios.get('http://localhost:5000/api/rooms/my-rooms', config);
+                    const { data } = await axios.get(`${BACKEND_URL}/api/rooms/my-rooms`, config);
                     setSavedRooms(data); // Rooms ko state mein save kar lo
                 } catch (err) {
                     console.log("Rooms fetch nahi ho paye", err);
@@ -52,7 +53,7 @@ const Home = () => {
 
                 // Backend ko request bhejo
                 const { data } = await axios.post(
-                    'http://localhost:5000/api/rooms/create',
+                    `${BACKEND_URL}/api/rooms/create`,
                     { roomId: id, roomName },
                     config
                 );

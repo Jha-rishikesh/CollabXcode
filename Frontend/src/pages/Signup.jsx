@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -13,7 +14,7 @@ const Signup = () => {
     const handleSignup = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:5000/api/auth/signup', { username, email, password });
+            await axios.post(`${BACKEND_URL}/api/auth/signup`, { username, email, password });
             alert("Account ban gaya! Ab login karein. 🎉");
             navigate('/login');
         } catch (err) {
@@ -24,7 +25,7 @@ const Signup = () => {
     // 2. Google Signup/Login Handler (Same as Login page)
     const googleSuccess = async (response) => {
         try {
-            const { data } = await axios.post('http://localhost:5000/api/auth/google', { 
+            const { data } = await axios.post(`${BACKEND_URL}/api/auth/google`, { 
                 token: response.credential 
             });
             localStorage.setItem('userInfo', JSON.stringify(data));
