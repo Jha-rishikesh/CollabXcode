@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { GoogleLogin } from '@react-oauth/google'; // Google tool import kiya
+import { GoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import '../styles/Auth.css';
 
 const Signup = () => {
     const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
@@ -37,51 +38,40 @@ const Signup = () => {
     };
 
     return (
-        <div style={styles.container}>
-            <div style={styles.box}>
-                <h2 style={{color: '#4CAF50'}}>Naya Account Banao 🚀</h2>
+        <div className="auth-container">
+            <div className="auth-box">
+                <h2 className="auth-title">Naya Account Banao 🚀</h2>
+                <p className="auth-subtitle">Join CollabXcode and code securely</p>
                 
-                <form onSubmit={handleSignup} style={styles.form}>
-                    <input type="text" placeholder="Username" style={styles.input} onChange={(e) => setUsername(e.target.value)} required />
-                    <input type="email" placeholder="Email Address" style={styles.input} onChange={(e) => setEmail(e.target.value)} required />
-                    <input type="password" placeholder="Password" style={styles.input} onChange={(e) => setPassword(e.target.value)} required />
-                    <button type="submit" style={styles.btn}>Sign Up</button>
+                <form onSubmit={handleSignup} className="auth-form">
+                    <input type="text" placeholder="Username" className="auth-input" onChange={(e) => setUsername(e.target.value)} required />
+                    <input type="email" placeholder="Email Address" className="auth-input" onChange={(e) => setEmail(e.target.value)} required />
+                    <input type="password" placeholder="Password" className="auth-input" onChange={(e) => setPassword(e.target.value)} required />
+                    <button type="submit" className="auth-btn">Sign Up</button>
                 </form>
 
-                {/* Divider aur Google Button add kar diya */}
-                <div style={styles.divider}>
-                    <span style={styles.line}></span>
-                    <span style={styles.or}>OR</span>
-                    <span style={styles.line}></span>
+                <div className="auth-divider">
+                    <span className="auth-line"></span>
+                    <span className="auth-or">OR</span>
+                    <span className="auth-line"></span>
                 </div>
 
-                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <div className="auth-google-wrapper">
                     <GoogleLogin
                         onSuccess={googleSuccess}
                         onError={() => alert("Google Signup Failed ❌")}
                         theme="filled_black"
                         shape="pill"
-                        text="signup_with" // Ye Google button ka text "Sign up with Google" kar dega
+                        text="signup_with" 
                     />
                 </div>
 
-                <p onClick={() => navigate('/login')} style={{cursor:'pointer', color:'#aaa', marginTop:'20px'}}>
-                    Pehle se account hai? <span style={{color: '#4CAF50', textDecoration: 'underline'}}>Login karein</span>
+                <p className="auth-footer" onClick={() => navigate('/login')}>
+                    Pehle se account hai? <span className="auth-link">Login karein</span>
                 </p>
             </div>
         </div>
     );
-};
-
-const styles = {
-    container: { height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#0f0f0f', color: '#fff' },
-    box: { width: '380px', padding: '40px', backgroundColor: '#1e1e1e', borderRadius: '12px', textAlign: 'center', boxShadow: '0 10px 25px rgba(0,0,0,0.5)' },
-    form: { display: 'flex', flexDirection: 'column', gap: '15px', marginTop: '20px' },
-    input: { padding: '12px', borderRadius: '6px', border: '1px solid #333', backgroundColor: '#2d2d2d', color: '#fff' },
-    btn: { padding: '12px', borderRadius: '6px', border: 'none', backgroundColor: '#4CAF50', color: '#fff', fontWeight: 'bold', cursor: 'pointer' },
-    divider: { display: 'flex', alignItems: 'center', margin: '20px 0' },
-    line: { flex: 1, height: '1px', backgroundColor: '#444' },
-    or: { padding: '0 10px', color: '#888', fontSize: '14px' }
 };
 
 export default Signup;
