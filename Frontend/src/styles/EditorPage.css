@@ -428,3 +428,116 @@
         transform: translateY(0) scale(1);
     }
 }
+
+.mobile-close-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: #94a3b8;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: #f8fafc;
+    font-size: 24px;
+    cursor: pointer;
+    padding-right: 12px;
+}
+
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 999;
+    backdrop-filter: blur(2px);
+}
+
+@media screen and (max-width: 768px) {
+    .editor-sidebar {
+        position: fixed;
+        left: -300px;
+        top: 0;
+        bottom: 0;
+        z-index: 1000;
+        box-shadow: 4px 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .editor-sidebar.show {
+        left: 0;
+    }
+
+    .sidebar-overlay.show {
+        display: block;
+    }
+
+    .mobile-close-btn {
+        display: block;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .editor-navbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+        padding: 16px;
+        min-height: auto;
+    }
+
+    .lang-wrapper {
+        justify-content: flex-start;
+    }
+
+    .action-buttons {
+        justify-content: space-between;
+        width: 100%;
+        gap: 8px;
+    }
+
+    .action-btn {
+        flex: 1;
+        justify-content: center;
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .io-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .io-box {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        height: 250px;
+        padding: 12px;
+    }
+    
+    .chat-panel {
+        width: 100%;
+        right: 0;
+        bottom: 0;
+        height: 60vh;
+        border-radius: 16px 16px 0 0;
+        border: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .chat-fab {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+}

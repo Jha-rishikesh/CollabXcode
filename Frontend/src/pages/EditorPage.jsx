@@ -30,6 +30,7 @@ const EditorPage = () => {
     const [messages, setMessages] = useState([]);
     const [chatMessage, setChatMessage] = useState('');
     const [isChatOpen, setIsChatOpen] = useState(false);
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     useEffect(() => {
         let isMounted = true;
@@ -240,9 +241,14 @@ const EditorPage = () => {
                 }
             }}/> 
             
-            <aside className="editor-sidebar">
+            <div className={`sidebar-overlay ${isSidebarOpen ? 'show' : ''}`} onClick={() => setIsSidebarOpen(false)}></div>
+
+            <aside className={`editor-sidebar ${isSidebarOpen ? 'show' : ''}`}>
                 <div className="sidebar-inner">
-                    <h2 className="sidebar-logo">🚀 CollabXcode</h2>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <h2 className="sidebar-logo">🚀 CollabXcode</h2>
+                        <button className="mobile-close-btn" onClick={() => setIsSidebarOpen(false)}>✖</button>
+                    </div>
                     <hr className="sidebar-divider" />
                     <h4 className="sidebar-heading">Connected Users ({clients.length})</h4>
                     
@@ -267,6 +273,7 @@ const EditorPage = () => {
             <main className="editor-wrap">
                 <div className="editor-navbar">
                     <div className="lang-wrapper">
+                        <button className="mobile-menu-btn" onClick={() => setIsSidebarOpen(true)}>☰</button>
                         <span className="lang-label">Language: </span>
                         <select 
                             className="lang-select" 
